@@ -19,7 +19,7 @@ def db():
     # 断开数据库连接操作
 
 def pytest_addoption(parser):
-    parser.addoption("--env", action="store", default="dev", help="environment: dev or prod")
+    parser.addoption("--env", action="store", default="dev", help="environment.properties: dev or prod")
 
 @pytest.fixture(scope="session")
 def env(request):

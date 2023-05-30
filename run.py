@@ -7,10 +7,12 @@
 import pytest
 import os
 
-#if __name__ == '__main__':
-    #pytest.main(['-v', '-s',  '--alluredir', 'report/''TestCases/'])
+# if __name__ == '__main__':
+#     pytest.main(['-v', '-s',  '--alluredir', 'allure-report/''TestCases/'])
 
 if __name__ == '__main__':
-    pytest.main(['-s', '-q','./','--clean-alluredir','--alluredir=report'])
-    #os.system('cp environment.properties ./allure-results/environment.properties')
-    os.system("allure generate -c -o allure-report")
+    pytest.main(["-vs", "./TestCases","--alluredir=temp/html"])
+    os.system("allure generate ./temp/html -o ./report  --clean")
+    # os.system('cp environment.properties.properties ./allure-results/environment.properties')
+    # os.system("allure generate -c -o allure-report")
+    # pytest.main()

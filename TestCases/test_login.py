@@ -4,11 +4,21 @@
 @Auth ： liangya
 @File ：test_login.py
 """
-def test_add():
-    assert 1+2==3
+import allure
 
-def test_sub():
-    assert 1==2
+# with allure.feature():
+class Test_test:
+    def test_add(self):
+        assert 1+2==3
+
+    def test_sub(self):
+        with allure.step("测试allure插件函数"):
+            assert 1==1
+
+    def test_aa(self):
+        ab=["sss","bbb"]
+        a="sss"
+        assert a in ab
 
 
 if __name__ == '__main__':
