@@ -11,7 +11,7 @@ import os
 #     pytest.main(['-v', '-s',  '--alluredir', 'allure-report/''TestCases/'])
 
 if __name__ == '__main__':
-    pytest.main(["-vs", "./TestCases","--alluredir=temp/html"])
+    pytest.main()
     os.system("allure generate ./temp/html -o ./report  --clean")
     # os.system('cp environment.properties.properties ./allure-results/environment.properties')
     # os.system("allure generate -c -o allure-report")
