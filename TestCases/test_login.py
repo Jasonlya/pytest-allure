@@ -4,8 +4,7 @@
 @Auth ： liangya
 @File ：test_login.py
 """
-import allure
-from page.LoginPage import LoginPage
+from page.PageObject.LoginPage import LoginPage
 from selenium import  webdriver
 
 # with allure.feature():
