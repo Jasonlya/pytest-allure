@@ -1,1 +1,1 @@
-[]
+[{"uid":"ce0c1f496e922a53","name":"test_login_failure","time":{"start":1686160777274,"stop":1686160777274,"duration":0},"status":"broken","severity":"normal"},{"uid":"b60be2f014ea1e27","name":"test_baidu[\\u6d4b\\u8bd5A-\\u6d4b\\u8bd5B-\\u6d4b\\u8bd5V]","time":{"start":1686160778503,"stop":1686160786372,"duration":7869},"status":"passed","severity":"normal"},{"uid":"d5eeb9ab1121bc5c","name":"test_login_success","time":{"start":1686160777166,"stop":1686160777166,"duration":0},"status":"broken","severity":"normal"}]

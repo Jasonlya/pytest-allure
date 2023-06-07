@@ -383,3 +383,6 @@ addopts = --xvfb
    - 在编辑对话框中，点击“新建”，输入 tesseract 的安装路径，点击“确定”保存。
 
 完成上述步骤后，重新运行你的 Python 代码，应该就可以正常使用 pytesseract 了。
+
+### **RF汉化**
+https://blog.csdn.net/bjxingmeng/article/details/85334393

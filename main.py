@@ -5,7 +5,10 @@
 @File ：main.py
 """
 
-import struct
+# import struct
+import os
 
 if __name__ == '__main__':
-    print(struct.calcsize("P") * 8)
+    # print(struct.calcsize("P") * 8)    #查看python的版本位数
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    print(ROOT_DIR)
