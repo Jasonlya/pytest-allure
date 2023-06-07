@@ -4,28 +4,31 @@
 @Auth ： liangya
 @File ：test_baidu.py
 """
+import pytest
 from selenium import webdriver
 from page.PageObject.BaiduPage import BaiduPage
 from config.env import env_dict,current_url
+import time
 from page.BasePage import BasePage as bp
-from selenium.webdriver.common.by import By
+
 
 
 class Testbaidu:
     def setup(self):
         self.driver = webdriver.Chrome()
-        self.driver.get(env_dict[current_url])
-        self.driver.maximize_window()
+        self.baidu_page = BaiduPage(self.driver)
 
+    def tearDown(self):
+        self.driver.quit()
     def test_baidu(self):
-        # BaiduPage = BaiduPage()
-        # 读取页面元素
-        KW = bp.kw
-        # 点击
-        bp.click(KW)
-        # 输入
-        bp.send_keys(KW, '我草泥马，傻逼女人')
+        "'测试百度输入'"
+        self.baidu_page.open()
+        self.driver.maximize_window()
+        time.sleep(5)    #强制等待
+        self.driver.implicitly_wait(5)  #隐式等待
+        self.baidu_page.search('测试水是生是死')
+        assert current_url !='cc'
 
 
 if __name__ == '__main__':
-    Testbaidu()
+    pytest.main(['-s', '-v', __file__])   #, '-k', 'test_my_case or test_another_case'

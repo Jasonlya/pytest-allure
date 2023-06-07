@@ -21,18 +21,28 @@ from selenium import  webdriver
 #         a="sss"
 #         assert a in ab
 
-class Test_testlogin():
-    def setup(self):
+import unittest
+from selenium import webdriver
+from page.PageObject.LoginPage import LoginPage
+
+class TestLogin():
+    """测试登录功能"""
+
+    def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('https://mail.qq.com/')
-        self.driver.maximize_window()
         self.login_page = LoginPage(self.driver)
 
-    def test_login(self):
-        self.login_page.enter_username('')
-        self.login_page.enter_password('')
-        self.login_page.click_login_button()
-        assert '' in self.driver.page_source
+    def tearDown(self):
+        self.driver.quit()
 
-if __name__ == '__main__':
-    Test_testlogin()
+    def test_login_success(self):
+        """测试登录成功"""
+        self.login_page.open()
+        self.login_page.login('user', 'password')
+        self.assertEqual(self.driver.current_url, 'https://example.com/home')
+
+    def test_login_failure(self):
+        """测试登录失败"""
+        self.login_page.open()
+        self.login_page.login('user', 'wrong-password')
+        self.assertEqual(self.login_page.get_error_message(), '用户名或密码错误')
