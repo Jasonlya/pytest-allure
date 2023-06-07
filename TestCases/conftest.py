@@ -5,6 +5,8 @@
 @File ：conftest.py
 """
 import pytest
+from selenium.webdriver.chrome import webdriver
+
 
 @pytest.fixture
 def login():
@@ -24,3 +26,11 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="session")
 def env(request):
     return request.config.getoption("--env")
+
+@pytest.fixture()
+def browser():
+    # 启动浏览器
+    driver = webdriver.Chrome(executable_path='./Drivers/chromedriver.exe')
+    yield driver
+    # 关闭浏览器
+    driver.quit()

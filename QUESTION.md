@@ -53,3 +53,47 @@ element = wait.until(EC.presence_of_element_located((By.ID, 'element_id')))
 
 ### **githubpush失败**
 ![img.png](img.png)
+
+
+### **python的目录操作**
+在 Python 中，可以使用 `os` 模块进行目录操作。以下是一些常用的目录操作函数：
+
+1. `os.chdir(path)`：切换当前工作目录到指定路径 `path`。
+2. `os.getcwd()`：获取当前工作目录。
+3. `os.listdir(path)`：返回指定路径 `path` 下的所有文件和目录的名称列表。
+4. `os.mkdir(path)`：创建一个新目录，目录名为 `path`。
+5. `os.makedirs(path)`：递归地创建新目录，包括所有必需但不存在的中间目录。
+6. `os.rmdir(path)`：删除指定目录，目录必须为空。
+7. `os.removedirs(path)`：递归地删除指定目录及其所有子目录，目录必须为空。
+8. `os.path.join(path1[, path2[, ...]])`：将多个路径组合成一个路径。
+
+以下是一些示例代码：
+
+```python
+import os
+
+# 切换当前工作目录到指定路径
+os.chdir('/path/to/directory')
+
+# 获取当前工作目录
+current_dir = os.getcwd()
+
+# 返回指定路径下的所有文件和目录的名称列表
+dir_contents = os.listdir('/path/to/directory')
+
+# 创建一个新目录
+os.mkdir('/path/to/new_directory')
+
+# 递归地创建新目录
+os.makedirs('/path/to/new/directory')
+
+# 删除指定目录
+os.rmdir('/path/to/directory_to_delete')
+
+# 递归地删除指定目录及其所有子目录
+os.removedirs('/path/to/directory_to_delete')
+
+# 将多个路径组合成一个路径
+path = os.path.join('/path/to', 'directory', 'file.txt')
+```
+注意，在 Windows 系统中，路径分隔符为反斜杠 `\`，而在 Linux 和 macOS 系统中，路径分隔符为正斜杠 `/`。为了保证跨平台兼容性，建议使用 `os.path.join()` 函数来拼接路径。
