@@ -97,3 +97,66 @@ os.removedirs('/path/to/directory_to_delete')
 path = os.path.join('/path/to', 'directory', 'file.txt')
 ```
 注意，在 Windows 系统中，路径分隔符为反斜杠 `\`，而在 Linux 和 macOS 系统中，路径分隔符为正斜杠 `/`。为了保证跨平台兼容性，建议使用 `os.path.join()` 函数来拼接路径。
+
+
+
+
+
+### **python的excel文件的基础操作**
+在 Python 中处理 .xls 和 .xlsx 文件，可以使用不同的库。其中，处理 .xls 文件，可以使用 xlrd 库，处理 .xlsx 文件，可以使用 openpyxl 或者 xlsxwriter 库。
+
+使用 xlrd 库处理 .xls 文件，可以读取 Excel 文件中的数据，例如：
+
+```python
+import xlrd
+
+# 打开 Excel 文件
+workbook = xlrd.open_workbook('example.xls')
+
+# 获取工作表
+worksheet = workbook.sheet_by_index(0)
+
+# 读取单元格数据
+cell_value = worksheet.cell_value(0, 0)
+```
+
+使用 openpyxl 库处理 .xlsx 文件，可以读取、修改和创建 Excel 文件，例如：
+
+```python
+import openpyxl
+
+# 打开 Excel 文件
+workbook = openpyxl.load_workbook('example.xlsx')
+
+# 获取工作表
+worksheet = workbook.active
+
+# 读取单元格数据
+cell_value = worksheet.cell(row=1, column=1).value
+
+# 修改单元格数据
+worksheet.cell(row=1, column=1).value = 'New Value'
+
+# 保存 Excel 文件
+workbook.save('example.xlsx')
+```
+
+使用 xlsxwriter 库处理 .xlsx 文件，可以创建和写入 Excel 文件，例如：
+
+```python
+import xlsxwriter
+
+# 创建 Excel 文件
+workbook = xlsxwriter.Workbook('example.xlsx')
+
+# 创建工作表
+worksheet = workbook.add_worksheet()
+
+# 写入单元格数据
+worksheet.write(0, 0, 'Hello World!')
+
+# 保存 Excel 文件
+workbook.close()
+```
+
+需要注意的是，xlrd 和 openpyxl 都支持读取 .xlsx 文件，但是 xlrd 不支持写入 .xlsx 文件。因此，如果需要写入 .xlsx 文件，建议使用 openpyxl 或者 xlsxwriter 库。

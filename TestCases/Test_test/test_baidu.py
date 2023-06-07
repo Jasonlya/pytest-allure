@@ -12,14 +12,16 @@ import time
 
 
 class Testbaidu:
-    # def setup(self):
-    #     self.driver = webdriver.Chrome()
-    #     self.baidu_page = BaiduPage(self.driver)
-    # def tearDown(self):
-    #     self.driver.quit()
-    def test_baidu(self,browser):
-        "'测试百度输入'"
+    def setup(self):
+        self.driver = webdriver.Chrome()
         self.baidu_page = BaiduPage(self.driver)
+    def tearDown(self):
+        self.driver.quit()
+
+    @pytest.mark.parametrize()
+    def test_baidu(self):
+        "'测试百度输入'"
+        # self.baidu_page = BaiduPage(self.driver)
         self.baidu_page.open()
         self.driver.maximize_window()
         time.sleep(5)    #强制等待

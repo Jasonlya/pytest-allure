@@ -30,7 +30,7 @@ def env(request):
 @pytest.fixture()
 def browser():
     # 启动浏览器
-    driver = webdriver.Chrome(executable_path='./Drivers/chromedriver.exe')
+    driver = webdriver.Chrome()
     yield driver
     # 关闭浏览器
     driver.quit()
