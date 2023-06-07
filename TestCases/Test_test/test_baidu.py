@@ -9,7 +9,7 @@ from selenium import webdriver
 from page.PageObject_test.BaiduPage import BaiduPage
 from config.env import env_dict,current_url
 import time
-
+from util.operationExcel import get_data_from_excel
 
 class Testbaidu:
     def setup(self):
@@ -18,15 +18,15 @@ class Testbaidu:
     def tearDown(self):
         self.driver.quit()
 
-    @pytest.mark.parametrize()
-    def test_baidu(self):
+    @pytest.mark.parametrize("A,B,C",get_data_from_excel('../data/test_input.xlsx','Sheet1'))
+    def test_baidu(self,A,B,C):
         "'测试百度输入'"
         # self.baidu_page = BaiduPage(self.driver)
         self.baidu_page.open()
         self.driver.maximize_window()
         time.sleep(5)    #强制等待
         self.driver.implicitly_wait(5)  #隐式等待
-        self.baidu_page.search('测试水是生是死')
+        self.baidu_page.search(A)
         assert current_url !='cc'
 
 

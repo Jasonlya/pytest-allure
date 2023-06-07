@@ -13,4 +13,8 @@ def get_data_from_excel(file_path, sheet_name):
     data = []
     for row in sheet.iter_rows(min_row=2, values_only=True):
         data.append(row)
+    print(data)
     return data
+
+if __name__ == '__main__':
+    get_data_from_excel('../data/test_input.xlsx','Sheet1')
