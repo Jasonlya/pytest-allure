@@ -4,8 +4,11 @@
 @Auth ： liangya
 @File ：BaiduPage.py
 """
+import os
+from util.operationpath import get_path
 from page.BasePage import BasePage
 from selenium.webdriver.common.by import By
+from selenium import webdriver
 
 class BaiduPage(BasePage):
     #页面url
@@ -27,4 +30,7 @@ class BaiduPage(BasePage):
         # super().find_element(*self.sousuokuang).send_keys(input_text)
         self.driver.find_element(*self.sousuokuang).send_keys(input_text)  #将字符输入到搜索框
         self.driver.find_element(*self.btn_summit).click()                #点击提交按钮
+        # print('截屏路径为：'+os.path.join(get_path(),'\screenshot\ssss.png'))
+        # BasePage.take_screenshot(webdriver.Chrome,'E:\project\pytest-allure\screenshot\ssss.png')
+
 

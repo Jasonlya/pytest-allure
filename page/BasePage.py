@@ -7,7 +7,6 @@
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import (
     TimeoutException,
     NoAlertPresentException,
@@ -23,7 +22,9 @@ class BasePage:
             EC.presence_of_element_located(locator)
         )
         return element
-
+    def wait_for_element(self, locator, timeout=10):
+        """进行元素等待"""
+        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
     def find_elements(self, locator, timeout=10):
         """定位元素元组"""
         elements = WebDriverWait(self.driver, timeout).until(
@@ -82,5 +83,3 @@ class BasePage:
             return alert.text
         else:
             return None
-    def wait_for_element(self, locator, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))

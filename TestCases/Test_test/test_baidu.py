@@ -27,7 +27,7 @@ class Testbaidu:
         # self.baidu_page = BaiduPage(self.driver)
         self.baidu_page.open()
         self.driver.maximize_window()
-        time.sleep(5)    #强制等待
+        # time.sleep(5)    #强制等待
         self.driver.implicitly_wait(5)  #隐式等待
         self.baidu_page.search(A)
         assert current_url !='cc'
