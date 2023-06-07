@@ -363,4 +363,23 @@ pip install pytest-xvfb
 addopts = --xvfb
 ```
 
+### **ocr库验证码处理**
 这样就可以在运行 pytest 时自动启动虚拟 X 窗口，并在其中运行浏览器了。
+
+这个错误提示说无法找到 tesseract 引擎。tesseract 是一个开源的 OCR 引擎，可以用于图像识别。你需要安装 tesseract 并将其添加到系统 PATH 环境变量中，这样 pytesseract 才能正常工作。
+
+你可以按照以下步骤安装 tesseract：
+
+1. 访问 tesseract 的官方网站 https://github.com/UB-Mannheim/tesseract/wiki 下载适用于你的操作系统的安装程序。
+
+2. 运行安装程序，按照提示完成安装。
+
+3. 将 tesseract 的安装路径添加到系统 PATH 环境变量中。在 Windows 系统中，你可以按照以下步骤操作：
+
+   - 右键点击“此电脑”，选择“属性”。
+   - 点击“高级系统设置”。
+   - 在“系统属性”对话框中，点击“环境变量”。
+   - 在“系统变量”列表中，找到“Path”变量，双击打开编辑对话框。
+   - 在编辑对话框中，点击“新建”，输入 tesseract 的安装路径，点击“确定”保存。
+
+完成上述步骤后，重新运行你的 Python 代码，应该就可以正常使用 pytesseract 了。
