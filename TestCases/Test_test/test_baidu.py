@@ -28,6 +28,7 @@ class Testbaidu:
         self.driver.implicitly_wait(5)  #隐式等待
         self.baidu_page.search(A)
         assert current_url !='cc'
+        self.driver.quit()
 
 
 if __name__ == '__main__':

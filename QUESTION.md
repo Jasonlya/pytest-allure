@@ -247,3 +247,120 @@ workbook.close()
 ```
 
 需要注意的是，xlrd 和 openpyxl 都支持读取 .xlsx 文件，但是 xlrd 不支持写入 .xlsx 文件。因此，如果需要写入 .xlsx 文件，建议使用 openpyxl 或者 xlsxwriter 库。
+
+
+### **对于验证码的简单操作**
+对于验证码验证登录的测试，我们可以使用 pytest 和 Selenium 来实现。下面是一个示例：
+```python
+import pytest
+from selenium import webdriver
+
+def test_login_with_valid_code():
+    # 打开浏览器
+    driver = webdriver.Chrome()
+    driver.get("https://example.com/login")
+
+    # 输入用户名和密码
+    username_input = driver.find_element_by_name("username")
+    password_input = driver.find_element_by_name("password")
+    username_input.send_keys("user")
+    password_input.send_keys("pass")
+
+    # 获取验证码
+    code_img = driver.find_element_by_css_selector(".code-img")
+    code = code_img.text
+
+    # 输入验证码
+    code_input = driver.find_element_by_name("code")
+    code_input.send_keys(code)
+
+    # 点击登录按钮
+    login_button = driver.find_element_by_css_selector(".login-btn")
+    login_button.click()
+
+    # 验证登录成功
+    assert driver.current_url == "https://example.com/home"
+
+    # 关闭浏览器
+    driver.quit()
+
+def test_login_with_invalid_code():
+    # 打开浏览器
+    driver = webdriver.Chrome()
+    driver.get("https://example.com/login")
+
+    # 输入用户名和密码
+    username_input = driver.find_element_by_name("username")
+    password_input = driver.find_element_by_name("password")
+    username_input.send_keys("user")
+    password_input.send_keys("pass")
+
+    # 输入错误的验证码
+    code_input = driver.find_element_by_name("code")
+    code_input.send_keys("invalid")
+
+    # 点击登录按钮
+    login_button = driver.find_element_by_css_selector(".login-btn")
+    login_button.click()
+
+    # 验证登录失败
+    assert "验证码错误" in driver.page_source
+
+    # 关闭浏览器
+    driver.quit()
+```
+
+在这个示例中，我们定义了两个测试函数，分别测试了使用有效验证码和无效验证码登录的情况。在每个测试函数中，我们使用 Selenium 打开浏览器，输入用户名、密码和验证码，然后点击登录按钮。最后，我们使用 `assert` 语句验证登录结果是否符合预期。如果登录成功，我们验证当前页面的 URL 是否是首页的 URL；如果登录失败，我们验证页面是否包含错误提示信息。在每个测试函数结束后，我们使用 `driver.quit()` 关闭浏览器。
+
+
+### **无头配置**
+要在 pytest 中使用无头浏览器进行测试，你需要使用 Selenium WebDriver。Selenium WebDriver 是一个用于自动化 Web 应用程序测试的工具，它可以与各种浏览器进行交互并模拟用户操作。
+
+在使用 Selenium WebDriver 之前，你需要先安装一个浏览器驱动程序。例如，如果你要使用 Chrome 浏览器进行测试，你需要下载 ChromeDriver 并将其添加到系统路径中。你可以在以下链接中下载 ChromeDriver：
+
+https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+安装好 ChromeDriver 后，你可以使用 Selenium WebDriver 的 Python 接口来编写测试用例。下面是一个使用无头 Chrome 浏览器进行测试的示例：
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import pytest
+
+@pytest.fixture(scope='session')
+def browser():
+    # 设置 Chrome 为无头模式
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    # 启动 Chrome 浏览器
+    driver = webdriver.Chrome(options=chrome_options)
+    yield driver
+    # 关闭浏览器
+    driver.quit()
+
+def test_example(browser):
+    # 打开网页
+    browser.get('https://www.google.com')
+    # 获取页面标题
+    assert 'Google' in browser.title
+```
+
+在这个示例中，我们使用了 pytest 的 fixture 功能来创建一个浏览器实例。我们使用了 ChromeOptions 类来设置 Chrome 为无头模式，并使用 webdriver.Chrome() 方法来启动 Chrome 浏览器。在测试用例中，我们使用了 browser.get() 方法来打开一个网页，并使用 assert 语句来检查页面标题是否包含 'Google'。最后，我们使用 yield 关键字来返回浏览器实例，并在测试结束后使用 driver.quit() 方法来关闭浏览器。
+
+这是一个简单的示例，你可以根据你的具体需求进行修改和扩展。
+
+可以使用 `pytest-xvfb` 插件来实现无头浏览器的配置。这个插件可以在 Linux 上使用虚拟 X 窗口来运行浏览器，从而实现无头模式的测试。安装方法如下：
+
+```
+pip install pytest-xvfb
+```
+
+然后在 `pytest.ini` 文件中添加以下内容：
+
+```
+[pytest]
+addopts = --xvfb
+```
+
+这样就可以在运行 pytest 时自动启动虚拟 X 窗口，并在其中运行浏览器了。
