@@ -50,3 +50,6 @@ element = wait.until(EC.presence_of_element_located((By.ID, 'element_id')))
 ```
 在上面的代码中，我们首先导入了 WebDriverWait 类和一些常用的等待条件。然后，我们创建了一个 WebDriverWait 对象，并指定了最长等待时间。接着，我们使用 until() 方法来指定等待条件，直到条件成立或者超时为止。最后，我们可以通过返回的元素对象来执行后续的操作。
 需要注意的是，显示等待应该尽量避免设置过长的等待时间，否则会影响测试效率。同时，如果等待时间设置过短，可能会导致测试失败。因此，需要根据具体情况来合理设置等待时间。
+
+### **githubpush失败**
+![img.png](img.png)
