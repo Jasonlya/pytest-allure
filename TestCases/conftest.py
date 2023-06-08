@@ -5,14 +5,14 @@
 @File ：conftest.py
 """
 import pytest
-from selenium.webdriver.chrome import webdriver
+from selenium import webdriver
 
 
-@pytest.fixture
-def login():
-    # 登录操作
+@pytest.fixture(scope='function')
+def login(webdriver):
+    # 在这里进行登录操作
     yield
-    # 退出登录操作
+    # 在这里进行退出操作
 
 @pytest.fixture(scope="session")
 def db():
@@ -31,6 +31,7 @@ def env(request):
 def browser():
     # 启动浏览器
     driver = webdriver.Chrome()
+    driver.maximize_window()
     yield driver
     # 关闭浏览器
     driver.quit()

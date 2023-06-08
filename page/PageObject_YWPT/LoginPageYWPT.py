@@ -18,45 +18,36 @@ class LoginPageYWPT(BasePage):
     url = 'http://192.168.20.164:8080/ywpt'
 
     # 页面元素
-    # username_input = (By.ID, 'username')
-    # password_input = (By.ID, 'password')
-    # yzm_input = (By.ID, 'captcha')
-    # login_button = (By.ID, 'dl')
+    username_input = (By.ID, 'username')
+    password_input = (By.ID, 'password')
+    yzm_input = (By.ID, 'captcha')
+    login_button = (By.ID, 'dl')
     # error_message = (By.ID, 'error-message')
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.username_input = (By.ID, 'username')
-        self.password_input = (By.ID, 'password')
-        self.yzmimg = (By.ID,'captchaImg')
-        self.yzm_input = (By.ID, 'captcha')
-        self.login_button = (By.ID, 'dl')
-    def open(self):
-        """打开页面"""
-        self.driver.get(self.url)
-
     def login(self, username, password):
         """登录"""
-        self.driver.find_element(*self.username_input).send_keys(username)
-        self.driver.find_element(*self.password_input).send_keys(password)
+        """实例化BasePage对象"""
+        loginpage = BasePage(self.driver)
+        """输入用户名"""
+        loginpage.send_keys(*self.username_input,username)
+        """输入密码"""
+        loginpage.send_keys(*self.password_input,password)
         """验证码处理，返回yzm_input"""
         img = self.driver.find_element(*self.yzmimg)
         # rect = img.getRect()
         # print(rect)
         img.screenshot('./yzm.png')
-        yzm_input = operationyzm('./yzm.png')
-        print(yzm_input)
+        yzm = operationyzm('./yzm.png')
+        print(yzm)
         time.sleep(5)
         """输入验证码"""
-        self.driver.find_element(*self.yzm_input).send_keys(yzm_input)
-        """登录"""
-        time.sleep(5)
-        self.driver.find_element(*self.login_button).click()
+        loginpage.send_keys(*self.yzm_input,yzm)
+        """点击登录"""
+        loginpage.click(*self.login_button)
         time.sleep(5)
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()
-    test = LoginPageYWPT(driver=driver)
+    test = LoginPageYWPT(driver)
     test.open()
-    driver.maximize_window()
     time.sleep(5)
     test.login('admin','Tdh@123456')

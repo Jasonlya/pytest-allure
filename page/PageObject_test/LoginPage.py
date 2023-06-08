@@ -6,6 +6,8 @@
 """
 
 from selenium.webdriver.common.by import By
+from page.BasePage import BasePage
+
 
 class LoginPage:
     """登录页面"""
@@ -19,18 +21,18 @@ class LoginPage:
     login_button = (By.ID, 'login-button')
     error_message = (By.ID, 'error-message')
 
-    def __init__(self, driver):
-        self.driver = driver
-
-    def open(self):
-        """打开页面"""
-        self.driver.get(self.url)
 
     def login(self, username, password):
         """登录"""
-        self.driver.find_element(*self.username_input).send_keys(username)
-        self.driver.find_element(*self.password_input).send_keys(password)
-        self.driver.find_element(*self.login_button).click()
+        """实例化BasePage"""
+        loginpage = BasePage(self.driver)
+        """输入用户名"""
+        loginpage.send_keys(*self.username_input,username)
+        """输入密码"""
+        loginpage.send_keys(*self.password_input,password)
+        """点击登录"""
+        loginpage.click(*self.login_button)
+
 
     def get_error_message(self):
         """获取错误提示信息"""
