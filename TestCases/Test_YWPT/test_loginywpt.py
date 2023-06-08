@@ -21,7 +21,7 @@ class TestLogin:
     def test_loginywpt(self):
         """测试登录成功"""
         self.TestLogin.open()
-        self.TestLogin.login('admin', 'Tdh@123456',operationyzm(image=r'F:\PycharmProjects\pytest-allure\pytest-allure\util\test.png'))
+        self.TestLogin.login('admin', 'Tdh@123456')
         assert self.driver.current_url != 'http://192.168.20.164:8080/ywpt/courtmain.jsp'
 
     # def test_login_failure(self):

@@ -15,7 +15,9 @@ from selenium.common.exceptions import (
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-
+    def open(self):
+        "'打开页面'"
+        self.driver.get(self.url)
     def find_element(self, locator, timeout=10):
         """定位单个元素"""
         element = WebDriverWait(self.driver, timeout).until(
@@ -55,6 +57,10 @@ class BasePage:
     def take_screenshot(self, filename):
         """截屏"""
         self.driver.save_screenshot(filename)
+
+    def take_screenshot_x_y(self,locator,filename):
+        """截取对应元素的图"""
+        element = self.driver.find_element()
 
     def switch_to_frame(self, by, locator):
         """判断frame是否存在，存在就跳到frame"""
