@@ -15,10 +15,10 @@ from util.operationExcel import get_data_from_excel
 from util.operationpath import get_path
 
 class Testbaidu:
-    def setup(self):
+    def setup_method(self):
         self.driver = webdriver.Chrome()
         self.baidu_page = BaiduPage(self.driver)
-    def tearDown(self):
+    def teardown_method(self):
         self.driver.quit()
 
     @pytest.mark.parametrize("A,B,C",get_data_from_excel(os.path.join(get_path(),'./data/test_input.xlsx'),'Sheet1'))

@@ -2,7 +2,7 @@
 """
 @Time ： 2023/6/4 22:42
 @Auth ： liangya
-@File ：LoginPage.py
+@File ：LoginPageYWPT.py
 """
 
 from selenium.webdriver.common.by import By
