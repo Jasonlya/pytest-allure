@@ -32,4 +32,5 @@ def operationyzm(image):
 
 if __name__ == '__main__':
     # image=r'F:\PycharmProjects\pytest-allure\pytest-allure\page\PageObject_YWPT\yzm.png'
-    operationyzm(r'E:\project\pytest-allure\page\PageObject_YWPT\yzm.png')
+    # E:\project\pytest - allure\img.png  E:\project\pytest-allure\page\PageObject_YWPT\yzm.png
+    operationyzm(r'E:\project\pytest-allure\img.png')

@@ -4,8 +4,11 @@
 @Auth ： liangya
 @File ：conftest.py
 """
+import time
+
 import pytest
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 @pytest.fixture(scope='function')
@@ -34,4 +37,25 @@ def browser():
     driver.maximize_window()
     yield driver
     # 关闭浏览器
+    driver.quit()
+@pytest.fixture()
+def loginywpt():
+    driver =webdriver.Chrome()
+    driver.maximize_window()
+    """执行登录"""
+    driver.get("http://192.168.20.164:8080/ywpt")
+    driver.find_element(By.ID, 'username').send_keys('admin')
+    driver.find_element(By.ID, 'password').send_keys('Tdh@123456')
+    """验证码获取"""
+    # driver.find_element()
+    time.sleep(8)
+    """解析为字符串"""
+    # yzm='123'
+    # driver.find_element(By.ID, 'captcha').send_keys(yzm)
+    driver.find_element(By.XPATH, '//*[@id="dl"]').click()
+    time.sleep(5)
+    """返回浏览器对象"""
+    yield driver
+
+    """关闭浏览器"""
     driver.quit()

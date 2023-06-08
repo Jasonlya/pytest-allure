@@ -11,18 +11,11 @@ from util.opeartionYzm import operationyzm
 class TestFwqwh:
     """测试登录功能"""
 
-    def setUp(self):
-        self.driver = webdriver.Chrome()
-        self.fwqwh_page = FwqwhPage(self.driver)
-
-    def tearDown(self):
-        self.driver.quit()
-
-    def test_login(self):
+    def test_login(self,loginywpt):
         """测试登录成功"""
-        self.fwqwh_page.open()
-        self.fwqwh_page.xjfwq('192.168.13.126','192.168.13.126')
-        assert self.driver.current_url != 'http://192.168.20.164:8080/ywpt/courtmain.jsp'
+        fwqwh = FwqwhPage(loginywpt)
+        # fwqwh.open()
+        fwqwh.xjfwq('192.168.测试名称','192.168.111.233')
 
     # def test_login_failure(self):
     #     """测试登录失败"""

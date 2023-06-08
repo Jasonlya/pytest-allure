@@ -20,6 +20,7 @@ class LoginPageYWPT(BasePage):
     # 页面元素
     username_input = (By.ID, 'username')
     password_input = (By.ID, 'password')
+    yzmiamg = ()
     yzm_input = (By.ID, 'captcha')
     login_button = (By.ID, 'dl')
     # error_message = (By.ID, 'error-message')
@@ -28,21 +29,22 @@ class LoginPageYWPT(BasePage):
         """实例化BasePage对象"""
         loginpage = BasePage(self.driver)
         """输入用户名"""
-        loginpage.send_keys(*self.username_input,username)
+        loginpage.send_keys((By.ID, 'username'),username)
         """输入密码"""
-        loginpage.send_keys(*self.password_input,password)
+        loginpage.send_keys((By.ID, 'password'),password)
         """验证码处理，返回yzm_input"""
-        img = self.driver.find_element(*self.yzmimg)
+        # img = self.driver.find_element(*self.yzmimg)
         # rect = img.getRect()
         # print(rect)
-        img.screenshot('./yzm.png')
-        yzm = operationyzm('./yzm.png')
-        print(yzm)
+        # img.screenshot('./yzm.png')
+        # yzm = operationyzm('./yzm.png')
+        # print(yzm)
+        # time.sleep(5)
+        # """输入验证码"""
+        # loginpage.send_keys(*self.yzm_input,yzm)
         time.sleep(5)
-        """输入验证码"""
-        loginpage.send_keys(*self.yzm_input,yzm)
         """点击登录"""
-        loginpage.click(*self.login_button)
+        loginpage.click((By.ID, 'dl'))
         time.sleep(5)
 
 if __name__ == '__main__':

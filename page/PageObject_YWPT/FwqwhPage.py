@@ -11,19 +11,25 @@ import time
 
 class FwqwhPage(BasePage):
     #页面url
-    url = 'http://192.168.20.164:8080/ywpt/courtmain.jsp'
-    def __init__(self,driver):
-        super().__init__(driver)
-        self.jczy = (By.ID,'02')
-        self.fwqwh = (By.ID,'02_0701')
-        self.xjbt = (By.ID,'btnAdd')
-        self.inputjdmc = (By.XPATH,'/html/body/form/table/tbody/tr[1]/td[2]/input')
-        self.inputip = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/input')
-        self.bcbt = (By.ID,'btnSave')
+    # url = 'http://192.168.20.164:8080/ywpt/courtmain.jsp'
+    #页面元素
+    jczy = (By.ID, '02')
+    fwqwh = (By.ID, '02_0701')
+    xjbt = (By.ID, 'btnAdd')
+    inputjdmc = (By.XPATH, '/html/body/form/table/tbody/tr[1]/td[2]/input')
+    inputip = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/input')
+    bcbt = (By.ID, 'btnSave')
 
-    def open(self):
-        "'打开页面'"
-        self.driver.get(self.url)
+    #页面行为
+    # def __init__(self,driver):
+    #     super().__init__(driver)
+    #     self.jczy = (By.ID,'02')
+    #     self.fwqwh = (By.ID,'02_0701')
+    #     self.xjbt = (By.ID,'btnAdd')
+    #     self.inputjdmc = (By.XPATH,'/html/body/form/table/tbody/tr[1]/td[2]/input')
+    #     self.inputip = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/input')
+    #     self.bcbt = (By.ID,'btnSave')
+
     def xjfwq(self,input_jdmc,input_ip):
         """
         新建服务器 节点名称，ip
@@ -31,15 +37,18 @@ class FwqwhPage(BasePage):
         :param input_ip:
         :return:
         """
-        BasePage.click(*self.jczy)
-        BasePage.click(*self.fwqwh)
-        BasePage.switch_to_frame()
-        BasePage.click(*self.xjbt)
-        BasePage.switch_to_frame()
-        BasePage.switch_to_frame()
-        BasePage.send_keys(*self.inputjdmc,input_jdmc)
-        BasePage.send_keys(*self.inputip, input_ip)
-        BasePage.click(*self.bcbt)
+        FwqwhPage = BasePage(self.driver)
+        FwqwhPage.click(self.jczy)
+        FwqwhPage.click(self.fwqwh)
+        time.sleep(3)
+        FwqwhPage.switch_to_frame("xpath",'//*[@id="capNav_cont"]/div[2]/iframe')
+        FwqwhPage.click(self.xjbt)
+        time.sleep(3)
+        FwqwhPage.switch_to_frame("xpath",'//*[@id="layui-layer-iframe2"]')
+        # FwqwhPage.switch_to_frame()
+        FwqwhPage.send_keys(self.inputjdmc,input_jdmc)
+        FwqwhPage.send_keys(self.inputip,input_ip)
+        FwqwhPage.click(self.bcbt)
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()

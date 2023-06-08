@@ -4,7 +4,7 @@
 @Auth ： liangya
 @File ：BasePage.py
 """
-
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import (
@@ -62,8 +62,15 @@ class BasePage:
         """截取对应元素的图"""
         element = self.driver.find_element()
 
+    byDic = {'id': By.ID, 'name': By.NAME, 'xpath': By.XPATH, 'css': By.CSS_SELECTOR}
+    outTime = 10
     def switch_to_frame(self, by, locator):
-        """判断frame是否存在，存在就跳到frame"""
+        """
+        判断frame是否存在，存在就跳到frame
+        :param by:
+        :param locator:
+        :return:
+        """
         print('info:switching to iframe "{}"'.format(locator))
         if by.lower() in self.byDic:
             try:
