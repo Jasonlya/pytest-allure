@@ -73,18 +73,4 @@ class SjkfwglPage(BasePage):
         time.sleep(2)
         xzsjkfwq.click(self.bcbt)
 
-# if __name__ == '__main__':
-#     driver = webdriver.Chrome()
-#     test = FwqwhPage(driver=driver)
-#     driver.get('http://192.168.20.164:8080/ywpt/courtmain.jsp')
-#     driver.delete_all_cookies()
-#     time.sleep(5)
-#     driver.maximize_window()
-#     time.sleep(5)
-#     #{'name' : 'foo', 'value' : 'bar'}
-#     driver.add_cookie({'JSESSIONID' : 'D303AF4736589995E4A80EECED31B6EB'})
-#     time.sleep(3)
-#     driver.refresh()
-#     time.sleep(5)
-#
-#
+
