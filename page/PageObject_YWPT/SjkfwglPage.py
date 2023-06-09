@@ -17,7 +17,12 @@ class SjkfwglPage(BasePage):
     xzbtn = (By.ID, 'btnAdd')
     #"switch frame  //*[@id="layui-layer-iframe2"] "
     inputfwqmc = (By.XPATH, '/html/body/form/table/tbody/tr[1]/td[2]/input')
-    selectsjk = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/div/div')
+    """下拉框  两次定位；通过select方法"""
+    inuputsjk = (By.CLASS_NAME, 'select_showbox')
+    selectsjk = (By.XPATH, '//*[@id="selectedId"]')   #/html/body/form/table/tbody/tr[2]/td[2]/div/ul  /html/body/form/table/tbody/tr[2]/td[2]/div/div
+    inputMYSQL = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/div/ul/li[3]')
+    inputORCLE = (By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/div/ul/li[2]')
+
     inputip = (By.NAME, 'ipaddr')
     inputport = (By.NAME, 'port')
     inputfwqsl = (By.NAME, 'oraclesid')
@@ -25,7 +30,7 @@ class SjkfwglPage(BasePage):
     inputyh = (By.NAME, 'sa')
     inputpwd = (By.NAME, 'sapass')
     inputpxh = (By.NAME, 'pxh')
-    bcbt = (By.ID, 'btnSave')
+    bcbt = (By.XPATH, '//*[@id="btnsave"]')
 
     #页面行为
     def sjkfwq_add(self,inputfwqmc,inputsjk,inputip,inputport,inputfwqsl,inputzfj,inputyh,inputpwd,inputpxh):
@@ -45,15 +50,19 @@ class SjkfwglPage(BasePage):
         xzsjkfwq = BasePage(self.driver)
         xzsjkfwq.click(self.jczy)
         xzsjkfwq.click(self.sjkf)
-        time.sleep(3)
+        time.sleep(1)
         xzsjkfwq.switch_to_frame("xpath",' //*[@id="capNav_cont"]/div[2]/iframe')
         xzsjkfwq.click(self.xzbtn)
-        time.sleep(3)
+        time.sleep(1)
         xzsjkfwq.switch_to_frame("xpath",'//*[@id="layui-layer-iframe2"]')
-        time.sleep(3)
+        time.sleep(1)
         xzsjkfwq.send_keys(self.inputfwqmc,inputfwqmc)
-        time.sleep(3)
-        xzsjkfwq.select_option_by_text(self.selectsjk,inputsjk)
+        time.sleep(1)
+        """下拉框处理-两次定位"""
+        xzsjkfwq.click(self.inuputsjk)
+        xzsjkfwq.click(self.inputORCLE)
+        # xzsjkfwq.select_option_by_text(self.selectsjk,inputsjk)
+
         xzsjkfwq.send_keys(self.inputip, inputip)
         xzsjkfwq.send_keys(self.inputport, inputport)
         xzsjkfwq.send_keys(self.inputfwqsl, inputfwqsl)
@@ -61,6 +70,7 @@ class SjkfwglPage(BasePage):
         xzsjkfwq.send_keys(self.inputyh, inputyh)
         xzsjkfwq.send_keys(self.inputpwd, inputpwd)
         xzsjkfwq.send_keys(self.inputpxh, inputpxh)
+        time.sleep(2)
         xzsjkfwq.click(self.bcbt)
 
 # if __name__ == '__main__':

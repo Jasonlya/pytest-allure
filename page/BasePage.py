@@ -63,6 +63,14 @@ class BasePage:
         except Exception as e:
             print('下拉框选择失败：'+e)
 
+    def select_option_by_text(self,locator,index,timeout=10):
+        """根据下拉框的索引进行选择"""
+        try:
+            element = self.find_element(locator,timeout)
+            Select(element).select_by_index(index)
+        except Exception as e:
+            print('下拉框选择失败：'+e)
+
     def select_option_by_value(self,locator,value,timeout=10):
         """根据下拉框的value值进行选择"""
         try:
