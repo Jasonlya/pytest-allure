@@ -384,5 +384,40 @@ addopts = --xvfb
 
 完成上述步骤后，重新运行你的 Python 代码，应该就可以正常使用 pytesseract 了。
 
+
+### **多线运行用例的两种方法**
+在 Pytest 中，可以使用 pytest-xdist 插件来实现多线程执行测试用例。这个插件可以在多个进程或者多个线程中运行测试用例，从而提高测试效率。安装 pytest-xdist 插件后，可以使用 pytest -n <num> 命令来指定并发执行的进程或线程数量。例如，pytest -n 2 表示使用两个进程或线程来执行测试用例。
+在 Python 中，可以使用 `threading` 模块来实现多线程运行测试用例。具体来说，你可以将每个测试用例封装成一个函数，然后使用 `threading.Thread` 类创建多个线程来并发执行这些函数。在每个线程中，你可以使用 Pytest 的 `pytest.main()` 函数来运行测试用例。
+
+下面是一个简单的示例，假设你有两个测试用例 `test_case1()` 和 `test_case2()`，你可以这样实现多线程运行：
+
+```python
+import threading
+import pytest
+
+def test_case1():
+    # 测试用例1的代码
+    assert True
+
+def test_case2():
+    # 测试用例2的代码
+    assert True
+
+def run_test(test_func):
+    pytest.main([__file__, '-k', test_func])
+
+thread1 = threading.Thread(target=run_test, args=('test_case1',))
+thread2 = threading.Thread(target=run_test, args=('test_case2',))
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+```
+在这个示例中，我们首先定义了两个测试用例 `test_case1()` 和 `test_case2()`。然后，我们定义了一个 `run_test()` 函数，它接受一个测试用例函数名作为参数，使用 Pytest 的 `pytest.main()` 函数来运行该测试用例。
+接下来，我们创建了两个线程 `thread1` 和 `thread2`，分别运行 `test_case1()` 和 `test_case2()`。我们使用 `threading.Thread` 类创建线程，并将 `run_test()` 函数和测试用例函数名作为参数传递给线程的 `target` 参数。我们使用 `args` 参数将测试用例函数名作为参数传递给 `run_test()` 函数。
+最后，我们启动线程并等待它们完成。我们使用 `thread1.join()` 和 `thread2.join()` 来等待线程完成。这样，我们就实现了多线程运行测试用例的功能。
+
 ### **RF汉化**
 https://blog.csdn.net/bjxingmeng/article/details/85334393
