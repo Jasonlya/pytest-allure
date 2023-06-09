@@ -9,7 +9,7 @@ from config.conf import select_browser
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from config.conf import env
 
 @pytest.fixture(scope='function')
 def login(webdriver):
@@ -61,7 +61,7 @@ def loginywpt():
     driver =webdriver.Chrome()
     driver.maximize_window()
     """执行登录"""
-    driver.get("http://192.168.20.164:8080/ywpt")
+    driver.get(env["ywpt"])
     driver.find_element(By.ID, 'username').send_keys('admin')
     driver.find_element(By.ID, 'password').send_keys('Tdh@123456')
     """验证码获取"""

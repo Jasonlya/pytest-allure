@@ -8,7 +8,6 @@ import logging
 import os.path
 import pytest
 from page.PageObject_test.BaiduPage import BaiduPage
-from config.env import env_dict,current_url
 import time
 from util.operationExcel import get_data_from_excel
 from util.operationpath import get_path
@@ -28,7 +27,7 @@ class Testbaidu:
         """隐式等待"""
         # self.driver.implicitly_wait(5)
         baidupage.search(A)
-        assert current_url !='cc'
+        assert 'ss' !='cc'
 
 if __name__ == '__main__':
     pytest.main(['-s', '-v', __file__])   #, '-k', 'test_my_case or test_another_case'
