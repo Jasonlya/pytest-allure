@@ -13,9 +13,11 @@ class SjkfwglPage(BasePage):
     #页面元素
     jczy = (By.ID, '02')
     sjkf = (By.ID, '02_0201')
-    #"switch frame  //*[@id="capNav_cont"]/div[2]/iframe"
+
+    iframe1 = (By.XPATH, '//*[@id="capNav_cont"]/div[2]/iframe')
     xzbtn = (By.ID, 'btnAdd')
-    #"switch frame  //*[@id="layui-layer-iframe2"] "
+
+    iframe2 = (By.XPATH, '//*[@id="layui-layer-iframe2"]')
     inputfwqmc = (By.XPATH, '/html/body/form/table/tbody/tr[1]/td[2]/input')
     """下拉框  两次定位；通过select方法"""
     inuputsjk = (By.CLASS_NAME, 'select_showbox')
@@ -51,10 +53,12 @@ class SjkfwglPage(BasePage):
         xzsjkfwq.click(self.jczy)
         xzsjkfwq.click(self.sjkf)
         time.sleep(1)
-        xzsjkfwq.switch_to_frame("xpath",' //*[@id="capNav_cont"]/div[2]/iframe')
+
+        xzsjkfwq.switch_to_frame(self.iframe1)
         xzsjkfwq.click(self.xzbtn)
         time.sleep(1)
-        xzsjkfwq.switch_to_frame("xpath",'//*[@id="layui-layer-iframe2"]')
+
+        xzsjkfwq.switch_to_frame(self.iframe2)
         time.sleep(1)
         xzsjkfwq.send_keys(self.inputfwqmc,inputfwqmc)
         time.sleep(1)

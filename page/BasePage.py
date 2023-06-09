@@ -63,7 +63,7 @@ class BasePage:
         except Exception as e:
             print('下拉框选择失败：'+e)
 
-    def select_option_by_text(self,locator,index,timeout=10):
+    def select_option_by_index(self,locator,index,timeout=10):
         """根据下拉框的索引进行选择"""
         try:
             element = self.find_element(locator,timeout)
@@ -89,7 +89,7 @@ class BasePage:
 
     byDic = {'id': By.ID, 'name': By.NAME, 'xpath': By.XPATH, 'css': By.CSS_SELECTOR}
     outTime = 10
-    def switch_to_frame(self, by, locator):
+    def switch_to_frame(self, locator):
         """
         判断frame是否存在，存在就跳到frame
         :param by:
@@ -97,14 +97,12 @@ class BasePage:
         :return:
         """
         print('info:switching to iframe "{}"'.format(locator))
-        if by.lower() in self.byDic:
-            try:
-                WebDriverWait(self.driver, self.outTime). \
-                    until(EC.frame_to_be_available_and_switch_to_it((self.byDic[by], locator)))
-            except TimeoutException as t:
-                print('error: found "{}" timeout！切换frame失败'.format(locator), t)
-        else:
-            print('the "{}" error!'.format(by))
+        try:
+            WebDriverWait(self.driver, self.outTime). \
+                until(EC.frame_to_be_available_and_switch_to_it(locator))
+        except TimeoutException as t:
+            print('error: found "{}" timeout！切换frame失败'.format(locator), t)
+
 
     def switch_to_default_frame(self):
         """返回默认的frame"""
