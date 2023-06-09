@@ -35,12 +35,24 @@ def browser():
     # 启动浏览器
     try:
         if select_browser == 'chrome':
+            """正常浏览器加载"""
             driver = webdriver.Chrome()
+            # """无头浏览器运行"""
+            # options = webdriver.ChromeOptions()
+            # options.add_argument('--headless')
+            # driver = webdriver.Chrome(options=options)
+
         if select_browser == 'fiefox':
+            """正常浏览器运行"""
             driver = webdriver.Fiefox()
+            # """无头浏览器运行"""
+            # options = webdriver.FirefoxOptions()
+            # options.add_argument('--headless')
+            # driver = webdriver.Firefox(options=options)
+        driver.maximize_window()
     except:
         print('select browser arise error')
-    driver.maximize_window()
+
     yield driver
     # 关闭浏览器
     driver.quit()

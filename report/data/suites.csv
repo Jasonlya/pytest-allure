@@ -1,2 +1,7 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Jun 08 14:36:01 CST 2023","Thu Jun 08 14:36:17 CST 2023","15185","TestCases.Test_test","test_baidu","Testbaidu","","","test_baidu[\u6d4b\u8bd5A-\u6d4b\u8bd5B-\u6d4b\u8bd5V]","'测试百度输入'"
+"skipped","Fri Jun 09 15:30:13 CST 2023","Fri Jun 09 15:30:13 CST 2023","0","TestCases.Test_YWPT","test_jcfwpz","Test_jcfwpz","","","test_jcfwpz_cx","测试查询服务器配置"
+"passed","Fri Jun 09 15:30:00 CST 2023","Fri Jun 09 15:30:07 CST 2023","6518","TestCases.Test_YWPT","test_fwqwh","TestFwqwh","","","test_fqwh_add","测试登录成功"
+"failed","Fri Jun 09 15:30:42 CST 2023","Fri Jun 09 15:30:52 CST 2023","10297","TestCases.Test_YWPT","test_loginywpt","TestLogin","","","test_loginywpt_success","测试登录成功"
+"passed","Fri Jun 09 15:31:59 CST 2023","Fri Jun 09 15:32:06 CST 2023","7149","TestCases.Test_YWPT","test_sjkfwgl","TestSjkfwq","","","test_sjkfwq_add","测试添加数据库服务器"
+"skipped","Fri Jun 09 15:25:29 CST 2023","Fri Jun 09 15:25:29 CST 2023","0","","","","","","test_fqwh_add","测试登录成功"
+"failed","Fri Jun 09 15:31:31 CST 2023","Fri Jun 09 15:31:42 CST 2023","10385","TestCases.Test_YWPT","test_loginywpt","TestLogin","","","test_login_failure","测试登录失败"

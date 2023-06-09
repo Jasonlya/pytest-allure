@@ -7,6 +7,7 @@
 import pytest
 from page.PageObject_YWPT.JcfwpzPage import JcfwpzPage
 
+@pytest.mark.skip("test not ready yet")
 class Test_jcfwpz:
     """测试登录功能"""
 
