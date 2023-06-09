@@ -75,7 +75,11 @@ def loginywpt():
                 options.add_argument('--headless')
                 driver = webdriver.Chrome(options=options)
             else :
-                """正常浏览器加载"""
+                # """正常浏览器加载--清缓存"""
+                # options = webdriver.ChromeOptions()
+                # options.add_argument('--disable-cache')
+                # driver = webdriver.Chrome(options=options)
+                # """正常浏览器加载--不清缓存"""
                 driver = webdriver.Chrome()
         if select_browser == 'fiefox':
             if headless == 1:
