@@ -96,17 +96,17 @@ class BasePage:
         :param locator:
         :return:
         """
-        print('info:switching to iframe "{}"'.format(locator))
+        print('\ninfo:switching to iframe "{}"'.format(locator))
         try:
             WebDriverWait(self.driver, self.outTime). \
                 until(EC.frame_to_be_available_and_switch_to_it(locator))
         except TimeoutException as t:
-            print('error: found "{}" timeout！切换frame失败'.format(locator), t)
+            print('\nerror: found "{}" timeout！切换frame失败'.format(locator), t)
 
 
     def switch_to_default_frame(self):
         """返回默认的frame"""
-        print('info:switch back to default iframe')
+        print('\ninfo:switch back to default iframe')
         try:
             self.driver.switch_to.default_content()
         except Exception as e:

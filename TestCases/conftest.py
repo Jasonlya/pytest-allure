@@ -5,7 +5,7 @@
 @File ：conftest.py
 """
 import time
-from config.conf import select_browser
+from config.conf import select_browser,headless,WindowSize
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -26,30 +26,39 @@ def db():
 def pytest_addoption(parser):
     parser.addoption("--env", action="store", default="dev", help="environment.properties: dev or prod")
 
-@pytest.fixture(scope="session")
-def env(request):
-    return request.config.getoption("--env")
+# @pytest.fixture(scope="session")
+# def env(request):
+#     return request.config.getoption("--env")
 
 @pytest.fixture()
 def browser():
     # 启动浏览器
     try:
         if select_browser == 'chrome':
-            """正常浏览器加载"""
-            driver = webdriver.Chrome()
-            # """无头浏览器运行"""
-            # options = webdriver.ChromeOptions()
-            # options.add_argument('--headless')
-            # driver = webdriver.Chrome(options=options)
-
+            if headless == 1:
+                """无头浏览器运行"""
+                options = webdriver.ChromeOptions()
+                options.add_argument('--headless')
+                driver = webdriver.Chrome(options=options)
+            else :
+                """正常浏览器加载"""
+                driver = webdriver.Chrome()
         if select_browser == 'fiefox':
-            """正常浏览器运行"""
-            driver = webdriver.Fiefox()
-            # """无头浏览器运行"""
-            # options = webdriver.FirefoxOptions()
-            # options.add_argument('--headless')
-            # driver = webdriver.Firefox(options=options)
-        driver.maximize_window()
+            if headless == 1:
+                """无头浏览器运行"""
+                options = webdriver.FirefoxOptions()
+                options.add_argument('--headless')
+                driver = webdriver.Firefox(options=options)
+            else:
+                """正常浏览器加载"""
+                driver = webdriver.Fiefox()
+        if WindowSize == 1:
+            driver.set_window_size(1920*1080)
+        elif WindowSize == 2:
+            driver.set_window_size(1366,768)
+        else:
+            """最大化窗口"""
+            driver.maximize_window()
     except:
         print('select browser arise error')
 
@@ -58,8 +67,34 @@ def browser():
     driver.quit()
 @pytest.fixture()
 def loginywpt():
-    driver =webdriver.Chrome()
-    driver.maximize_window()
+    try:
+        if select_browser == 'chrome':
+            if headless == 1:
+                """无头浏览器运行"""
+                options = webdriver.ChromeOptions()
+                options.add_argument('--headless')
+                driver = webdriver.Chrome(options=options)
+            else :
+                """正常浏览器加载"""
+                driver = webdriver.Chrome()
+        if select_browser == 'fiefox':
+            if headless == 1:
+                """无头浏览器运行"""
+                options = webdriver.FirefoxOptions()
+                options.add_argument('--headless')
+                driver = webdriver.Firefox(options=options)
+            else:
+                """正常浏览器加载"""
+                driver = webdriver.Fiefox()
+        if WindowSize == 1:
+            driver.set_window_size(1920*1080)
+        elif WindowSize == 2:
+            driver.set_window_size(1366,768)
+        else:
+            """最大化窗口"""
+            driver.maximize_window()
+    except:
+        print('select browser arise error')
     """执行登录"""
     driver.get(env["ywpt"])
     driver.find_element(By.ID, 'username').send_keys('admin')
