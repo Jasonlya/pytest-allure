@@ -7,6 +7,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import (
     TimeoutException,
     NoAlertPresentException,
@@ -53,6 +54,22 @@ class BasePage:
     def get_title(self):
         """获取页面标题"""
         return self.driver.title
+
+    def select_option_by_text(self,locator,text,timeout=10):
+        """根据下拉框的文本值进行选择"""
+        try:
+            element = self.find_element(locator,timeout)
+            Select(element).select_by_visible_text(text)
+        except Exception as e:
+            print('下拉框选择失败：'+e)
+
+    def select_option_by_value(self,locator,value,timeout=10):
+        """根据下拉框的value值进行选择"""
+        try:
+            element = self.find_element(locator,timeout)
+            Select(element).select_by_value(value)
+        except Exception as e:
+            print('下拉框选择失败：'+e)
 
     def take_screenshot(self, filename):
         """截屏"""

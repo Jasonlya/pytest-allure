@@ -5,7 +5,7 @@
 @File ：conftest.py
 """
 import time
-
+from config.conf import select_browser
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -33,7 +33,13 @@ def env(request):
 @pytest.fixture()
 def browser():
     # 启动浏览器
-    driver = webdriver.Chrome()
+    try:
+        if select_browser == 'chrome':
+            driver = webdriver.Chrome()
+        if select_browser == 'fiefox':
+            driver = webdriver.Fiefox()
+    except:
+        print('select browser arise error')
     driver.maximize_window()
     yield driver
     # 关闭浏览器
