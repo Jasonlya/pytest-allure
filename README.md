@@ -1,13 +1,12 @@
 # pytest-allure
+   本文为搭建python-pytest-allure-log UI自动化测试框架
 
+## *安装配置
 
-本文为搭建python-pytest-allure-log UI自动化测试框架
+## *目录解释
 
-TestCases为测试集
-config 配置文件
-   env.py 环境url配置
-data 数据集
-page page页面封装，包括BasePage页，各个模块页
-report allure报告生成，index.html为报告产生页
-temp allure报告生成的临时json报告
-util 公共方法
+## *运行路径
+
+## *测试用例编写
+
+## *参考文档

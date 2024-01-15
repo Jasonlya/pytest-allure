@@ -5,7 +5,7 @@
 @File ：conf.py
 """
 # 参数化文件的路径
-DATA_Path = './data'
+DATA_Path = './datas'
 
 #选择不同的浏览器进行测试   'fiefox','chrome'
 select_browser = 'chrome'

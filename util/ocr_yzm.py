@@ -2,7 +2,6 @@
 """
 @Time ： 2023/6/7 22:31
 @Auth ： liangya
-@File ：opeartionYzm.py
 """
 
 import pytesseract
@@ -31,6 +30,6 @@ def operationyzm(image):
     return code
 
 if __name__ == '__main__':
-    # image=r'F:\PycharmProjects\pytest-allure\pytest-allure\page\PageObject_YWPT\yzm.png'
-    # E:\project\pytest - allure\img.png  E:\project\pytest-allure\page\PageObject_YWPT\yzm.png
+    # image=r'F:\PycharmProjects\pytest-allure\pytest-allure\page_locations\PageObject_YWPT\yzm.png'
+    # E:\project\pytest - allure\img.png  E:\project\pytest-allure\page_locations\PageObject_YWPT\yzm.png
     operationyzm(r'F:\PycharmProjects\pytest-allure\pytest-allure\util\TEST2.png')

@@ -6,16 +6,10 @@
 """
 import pytest
 import os
-from  util.operationpath import get_path
-
-# if __name__ == '__main__':
-#     pytest.main(['-v', '-s',  '--alluredir', 'allure-report/''TestCases/'])
+from util import log_util
 
 if __name__ == '__main__':
-    # pytest.main(['-v','-s','-k' 'test_loginywpt'])      #单个运行
-    pytest.main()
-    os.system("allure generate ./temp/html -o ./report  --clean")
-    # os.system(f"allure serve .report/temp -h 127.0.0.1 -p 9999")
-    # os.system('cp environment.properties.properties ./allure-results/environment.properties')
-    # os.system("allure generate -c -o allure-report")
-    # pytest.main()
+    # 使用日志： 请使用info或以上级别记录日志
+    # log_util.set_log("discover.log")
+    pytest.main(["-vs", "--alluredir", "outputs/allure/temp_jsonreport", "--clean-alluredir"])
+    os.system("allure generate outputs/allure/temp_jsonreport -o outputs/allure/html --clean")
