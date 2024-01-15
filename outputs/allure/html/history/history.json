@@ -1,0 +1,1 @@
+{"b1453ede753a124d3e1fe02c890ab67a":{"statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1},"items":[{"uid":"fc9ba7f3f959f370","status":"broken","statusDetails":"AttributeError: 'TestBaidu' object has no attribute 'driver'","time":{"start":1705331369217,"stop":1705331369217,"duration":0}}]}}
