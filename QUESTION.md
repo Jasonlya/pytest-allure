@@ -139,7 +139,7 @@ pytest 中常用的断言方式是使用 `assert` 语句。下面是一些示例
 在 pytest 中，如果断言失败，pytest 会输出详细的错误信息，帮助我们快速定位问题。
 
 ### **githubpush失败**
-![img.png](img.png)
+![img.png](outputs/md_img/img.png)
 
 
 ### **python的目录操作**
