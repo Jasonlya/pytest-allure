@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"f86688d14d5642d7e52d70d919b2865a","name":"服务平台","statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1}}]}
+{"total":2,"items":[{"uid":"def7b0909c901de5b29f6e129b2d8fcd","name":"Feature 1","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"d17cf78e9808f9b439d7056080a2eef5","name":"Feature 2","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

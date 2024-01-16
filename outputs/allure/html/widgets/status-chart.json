@@ -1,1 +1,1 @@
-[{"uid":"fc9ba7f3f959f370","name":"test_baidu_search","time":{"start":1705331369217,"stop":1705331369217,"duration":0},"status":"broken","severity":"normal"}]
+[{"uid":"dc56f2f310bc56ac","name":"Test Case 1","time":{"start":1705412710312,"stop":1705412710312,"duration":0},"status":"passed","severity":"normal"},{"uid":"fa6b08482225d10d","name":"Test Case 2","time":{"start":1705412710314,"stop":1705412710314,"duration":0},"status":"passed","severity":"normal"}]
