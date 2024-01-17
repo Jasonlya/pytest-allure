@@ -5,10 +5,10 @@
 @File ：conftest.py
 """
 import time
-from config.conf import select_browser, headless, WindowSize
+# from config.conf import select_browser, headless, WindowSize
 import pytest
 from selenium import webdriver
-from config.conf import env
+# from config.conf import env
 
 
 @pytest.fixture(scope='function')
@@ -44,7 +44,7 @@ def pytest_addoption(parser):
 @pytest.fixture(scope='session')
 def web_driver():
     driver = webdriver.Chrome()
-    driver = open_browser('chrome')
+    # driver = open_browser('chrome')
     driver.maximize_window()
     driver.implicitly_wait(10)
     yield driver

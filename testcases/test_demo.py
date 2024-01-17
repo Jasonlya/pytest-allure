@@ -7,19 +7,23 @@
 import allure
 import pytest
 import logging as log
-from page_objects.baidu import  baidu
 from common import base_page
 
-@allure.feature('Feature 1')
-@allure.story('Story 1')
-@allure.title('Test Case 1')
+@allure.epic("审判系统")
+@allure.feature('门户登录模块')
+@allure.story('门户登录功能')
+@allure.suite("登录成功")
+@allure.title('登录成功2')
+@allure.title("步骤一")
 def test_case_1():
     # 测试步骤和断言
     pass
 
-@allure.feature('Feature 2')
-@allure.story('Story 2')
-@allure.title('Test Case 2')
+@allure.epic("审判系统")
+@allure.feature('门户登录模块')
+@allure.story('门户登录功能')
+@allure.title('登录失败')
+@allure.step("步骤二")
 def test_case_2():
     # 测试步骤和断言
     pass
