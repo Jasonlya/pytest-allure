@@ -5,8 +5,8 @@ base_dir = os.path.dirname(os.path.dirname(__file__))
 # 驱动地址 无法放入项目中读取，只能手动指定驱动位置
 # driver_path = os.path.abspath("D:/driver/chromedriver73.exe")
 
-# # 测试用例路径
-# cases_dir = os.path.join(base_dir, 'testcases')
+# 测试用例路径
+cases_dir = os.path.join(base_dir, 'testcases')
 
 # 测试数据路径
 yaml_datas_dir = os.path.join(base_dir, 'datas', 'yaml_data')
