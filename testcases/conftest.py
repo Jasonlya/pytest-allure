@@ -46,7 +46,7 @@ def web_driver():
     driver = webdriver.Chrome()
     # driver = open_browser('chrome')
     driver.maximize_window()
-    driver.implicitly_wait(10)
+    # driver.implicitly_wait(10)
     yield driver
     driver.quit()
 #

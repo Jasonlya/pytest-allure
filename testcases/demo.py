@@ -7,6 +7,7 @@
 import allure
 import pytest
 import logging as log
+from common import base_page
 
 
 @allure.epic("服务平台")
@@ -16,5 +17,7 @@ class TestBaidu:
 
     def test_baidu_search(self, web_driver):
         log.info("这是有一个测试demo")
-        web_driver.get('http://192.168.13.95/main.html')
-        log.info("页面打开完毕")
+        # web_driver.get('http://192.168.13.95/main.html')
+        # log.info("页面打开完毕")
+        test = base_page.BasePage(web_driver)
+        test.open('https://www.baidu.com')
