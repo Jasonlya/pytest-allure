@@ -121,6 +121,7 @@ allure格式: allure [options] [command] [command options]
 ![img_9.png](outputs/md_img/img_9.png)
 ![img_10.png](outputs/md_img/img_10.png)
 
+
 通过上我们可以看到 ，整体来说还是以测试报告的展示为主 ，只不过他的展示维度不同。既然展示维度不同 ，那么查看时更多的结合实际场景来查看，具体可参考如下方式 ：
 
 - 要看总体情况 ，先看总览，可以了解到编写了多少测试用例 ，有多少成功的、多少失败的。
