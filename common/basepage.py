@@ -74,25 +74,25 @@ class Page():
         self.driver.get(url)
 
     # 进入url站点
-    def open_url(self,url):
-        """
-        open url.
-        Usage:
-        driver.open("http://www.fengsulian.com")
-        """
-        start_time = time.time()
-        nowTime = time.strftime("%Y_%m_%d_%H_%M_%S")
-        file_name = 'open->%s.jpg' % nowTime
-        file_path = globalparam.exception_image_path + "\\" + file_name
-        try:
-            self._open_url(url)
-            self.my_info("{0}navigated to {1}, Spend {2} seconds"
-                          "".format(success, self.base_url + url, "%.5f"%(time.time()-start_time)))
-        except Exception:
-            self.my_info("{0}unable to load {1}, Spend {2} seconds"
-                          .format(fail, self.base_url + url, "%.5f"%(time.time()-start_time)))
-            self.fail_img()
-            raise
+    # def open_url(self,url):
+    #     """
+    #     open url.
+    #     Usage:
+    #     driver.open("http://www.fengsulian.com")
+    #     """
+    #     start_time = time.time()
+    #     nowTime = time.strftime("%Y_%m_%d_%H_%M_%S")
+    #     file_name = 'open->%s.jpg' % nowTime
+    #     file_path = globalparam.exception_image_path + "\\" + file_name
+    #     try:
+    #         self._open_url(url)
+    #         self.my_info("{0}navigated to {1}, Spend {2} seconds"
+    #                       "".format(success, self.base_url + url, "%.5f"%(time.time()-start_time)))
+    #     except Exception:
+    #         self.my_info("{0}unable to load {1}, Spend {2} seconds"
+    #                       .format(fail, self.base_url + url, "%.5f"%(time.time()-start_time)))
+    #         self.fail_img()
+    #         raise
 
     # 浏览器窗口最大化
     def max_window(self):
