@@ -59,3 +59,12 @@
 ## 4.测试用例编写
 
 ## 5.参考文档
+geckodriver(Firefox):https://github.com/mozilla/geckodriver/releases
+
+Chromedriver(Chrome):https://sites.google.com/a/chromium.org/chromedriver/home
+
+IEDriverServer(IE):http://selenium-release.storage.googleapis.com/index.html
+
+operadriver(Opera):https://github.com/operasoftware/operachromiumdriver/releases
+
+MicrosoftWebDriver(Edge):https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver

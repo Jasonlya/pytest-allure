@@ -4,6 +4,8 @@
 @Auth ： liangya
 @File ：base_page.py
 """
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,7 +15,7 @@ from selenium.common.exceptions import (
     TimeoutException,
     NoAlertPresentException,
 )
-import logging
+import logging as logger
 import os
 
 project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -135,6 +137,17 @@ class BasePage:
             return alert.text
         else:
             return None
+
+    # 切换窗口
+    def switch_window(self, filepath):
+        time.sleep(3)
+        try:
+            handles = self.driver.window_handles
+            self.driver.switch_to.window(handles[-1])
+            self.log.info('切换窗口成功')
+        except Exception as e:
+            self.logger.error(f'切换窗口失败，报错信息为{e}')
+            raise Exception(f'切换窗口失败，报错信息为{e}')
 
     '''浏览器事件-前进'''
 
