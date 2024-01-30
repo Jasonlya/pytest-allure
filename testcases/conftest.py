@@ -18,6 +18,11 @@ def login(webdriver):
     # 在这里进行退出操作
 
 
+# # 解决卡顿
+# options.add_argument("--disable-gpu")
+# options.add_argument("--no-sandbox")
+# options.add_argument("--disable-dev-shm-usage")
+
 @pytest.fixture(scope="session")
 def db():
     # 数据库连接操作
